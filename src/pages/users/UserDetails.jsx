@@ -40,7 +40,7 @@ const UserDetails = () => {
     }
 
     return (
-        <DashboardLayout title="User Daetails">
+        <DashboardLayout title="User Details">
             {userLoading ? (
                 <div className="flex items-center justify-center">
                     <FaSpinner className="size-6 animate-[spin_0.5s_linear_infinite]"/>

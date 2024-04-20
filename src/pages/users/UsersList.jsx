@@ -1,4 +1,3 @@
-import SkeletonTable from "@/components/Table/SkeletonTable.jsx";
 import {Link, useNavigate} from "react-router-dom";
 import Table from "@/components/Table/Table.jsx";
 import DashboardLayout from "@/components/Layouts/DashboardLayout.jsx";
@@ -18,7 +17,7 @@ const UsersList = () => {
         });
     }, []);
 
-    const handleOnRowClick = (rowItem)=>{
+    const handleOnRowClick = (rowItem) => {
         navigate(`/users/${rowItem.id}`);
     }
 
@@ -55,31 +54,34 @@ const UsersList = () => {
                 </Link>
             </div>
 
-            {usersLoading ? (
-                <SkeletonTable headers={headers} rows={8}/>
-            ) : (
-                <Table data={users} itemsParser={(item) => {
-                    return [
-                        item.id,
-                        (item.name.first_name || "") + " " +( item.name.last_name ?? ""),
-                        item.username,
-                        item.email,
-                        item.role
-                    ];
-                }}
-                       headers={headers}
-                       handleOnRowClick={handleOnRowClick}
-                modifyElement={(item) => (
-                    <>
-                        <Link to={`/users/${item.id}/edit`} onClick={(e) => handleOnEdit(e, item)} className="text-blue-400 hover:text-blue-600 underline">
-                            Edit
-                        </Link>
-                        <button onClick={(e) => handleOnDelete(e, item)} className="text-blue-400 hover:text-blue-600 underline pl-6">
-                            Remove
-                        </button>
-                    </>
-                )}/>
-            )}
+            <Table data={users}
+                   loading={usersLoading}
+                   itemsParser={(item) => {
+                       return {
+                           id: item.id,
+                           name: (item.name.first_name || "") + " " + (item.name.last_name ?? ""),
+                           username: item.username,
+                           email: item.email,
+                           role: item.role
+                       };
+                   }}
+                   itemElementParser={(key, value)=>{
+                       return value;
+                   }}
+                   headers={headers}
+                   handleOnRowClick={handleOnRowClick}
+                   modifyElement={(item) => (
+                       <>
+                           <Link to={`/users/${item.id}/edit`} onClick={(e) => handleOnEdit(e, item)}
+                                 className="text-blue-400 hover:text-blue-600 underline">
+                               Edit
+                           </Link>
+                           <button onClick={(e) => handleOnDelete(e, item)}
+                                   className="text-blue-400 hover:text-blue-600 underline pl-6">
+                               Remove
+                           </button>
+                       </>
+                   )}/>
         </DashboardLayout>
     );
 };

@@ -2,6 +2,7 @@ import {Link, NavLink} from "react-router-dom";
 import {DashboardIcon} from "@radix-ui/react-icons";
 import {useMemo} from "react";
 import {HiUsers} from "react-icons/hi2";
+import {BiSolidCategory} from "react-icons/bi";
 
 const SideNavigationBar = () => {
     const menus = useMemo(() => [
@@ -16,9 +17,9 @@ const SideNavigationBar = () => {
             icon: <HiUsers/>
         },
         {
-            href: "/",
-            label: "Dashboard",
-            icon: <DashboardIcon/>
+            href: "/category",
+            label: "Category",
+            icon: <BiSolidCategory/>
         },
         {
             href: "/",
@@ -61,7 +62,7 @@ const SideNavigationBar = () => {
                     {menus.map((menuItem, index) => (
                         <li key={index} className="hover:bg-gray-100">
                             <NavLink to={menuItem.href}
-                                  className={`sidebar-menu
+                                     className={`sidebar-menu
                                       px-6 py-3 gap-2 text-sm  flex items-center focus:text-orange-500 border-b
                                   `}>
                                 {menuItem.icon}

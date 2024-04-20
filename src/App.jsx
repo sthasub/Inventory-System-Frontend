@@ -1,19 +1,21 @@
 import Welcome from "@/pages/Welcome.jsx";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import SignIn from "@/pages/SignIn.jsx";
-import SignUp from "@/pages/SignUp.jsx";
-import ForgetPassword from "@/pages/ForgetPassword.jsx";
-import ResetPassword from "@/pages/ResetPassword.jsx";
+import SignIn from "@/pages/auth/SignIn.jsx";
+import SignUp from "@/pages/auth/SignUp.jsx";
+import ForgetPassword from "@/pages/auth/ForgetPassword.jsx";
+import ResetPassword from "@/pages/auth/ResetPassword.jsx";
 import Dashboard from "@/pages/Dashboard.jsx";
 import {useEffect, useState} from "react";
 import {currentUser} from "@/API/UsersApi.js";
 import ProtectedRoute from "@/components/Layouts/ProtectedRoute.jsx";
 import {FaSpinner} from "react-icons/fa";
 import {useStore} from "@/store/store.js";
-import AddUser from "@/pages/AddUser.jsx";
-import UsersList from "@/pages/UsersList.jsx";
-import UserDetails from "@/pages/UserDetails.jsx";
-import EditUser from "@/pages/EditUser.jsx";
+import AddUser from "@/pages/users/AddUser.jsx";
+import UsersList from "@/pages/users/UsersList.jsx";
+import UserDetails from "@/pages/users/UserDetails.jsx";
+import EditUser from "@/pages/users/EditUser.jsx";
+import CategoryList from "@/pages/category/CategoryList.jsx";
+import AddCategory from "@/pages/category/AddCategory.jsx";
 
 function App() {
     const [loading, setLoading] = useState(true);
@@ -57,6 +59,9 @@ function App() {
                     <Route path="/users/add" element={<AddUser/>}/>
                     <Route path="/users/:id" element={<UserDetails/>}/>
                     <Route path="/users/:id/edit" element={<EditUser/>}/>
+
+                    <Route path="/category" element={<CategoryList/>}/>
+                    <Route path="/category/add" element={<AddCategory/>}/>
                 </Route>
 
                 <Route path={"*"} element={<div>Page not found.</div>}/>

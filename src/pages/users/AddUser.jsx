@@ -1,19 +1,16 @@
-import {Controller, useForm} from "react-hook-form";
+import { useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import addUserFormSchema from "@/formSchema/addUserFormSchema.js";
-import InputField from "@/components/Form/InputField.jsx";
 import SubmitButton from "@/components/Form/SubmitButton.jsx";
 import DashboardLayout from "@/components/Layouts/DashboardLayout.jsx";
 import {Link, useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {Button} from "@/components/ui/button.jsx";
-import TextArea from "@/components/Form/TextArea.jsx";
 import {addUser} from "@/API/AuthApi.js";
-import DropdownField from "@/components/Form/DropdownField.jsx";
 import UserForm from "@/components/Modules/User/UserForm.jsx";
 
 const AddUser = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const [isLoading, setIsLoading] = useState(false)
 

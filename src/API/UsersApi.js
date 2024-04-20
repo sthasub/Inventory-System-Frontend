@@ -6,7 +6,7 @@ export const getUsers = async () => {
 }
 
 export const getUser = async (id) => {
-    const result = await api().get(`users/${id}`);
+    const result = await api().get(`/users/${id}`);
     return result.data;
 }
 

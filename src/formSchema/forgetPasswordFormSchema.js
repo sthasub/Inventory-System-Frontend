@@ -4,5 +4,5 @@ export default yup
     .object({
         email: yup.string().email().required("Email is Required"),
     })
-    .required()
+    .required();
 
